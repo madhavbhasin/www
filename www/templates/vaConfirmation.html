@@ -1,0 +1,56 @@
+<ion-view cache-view="false">
+ 
+ <!-- <ion-nav-title>VIRGINIA DEPARTMENT OF SOCIAL SERVICES</ion-nav-title> -->
+ <ion-header-bar class="va-header" >
+  	<img class="va-header-image" />
+</ion-header-bar>
+ <ion-content class="va-content">
+
+    <form name="vaConfirmationForm" ng-controller="vaConfirmationCtrl" ng-submit="submitvaCheckInPin()">
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div> 
+		
+		<div class="row">
+			<div class="col col-10">&nbsp;</div>
+			<div class="col col-80" style="text-align: center;background-color: #2E4E65;height: 100%; opacity: 0.6; border-top: 5px solid #ffffff;">
+			<div class="row">
+				<div class="col col-60 col-offset-20">
+					<div class="row">
+						<div class="col col-100" style="text-align: center; padding-top: 25px;  padding-bottom: 25px; font-size: 250%; color: #f3f3f3;border-bottom: solid 1px; line-height:1.7;">
+							{{confMsg}}                  
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col-100" style="text-align: center; padding-top: 25px; padding-bottom: 25px; color: #D3D3D3; font-size: 190%;line-height:1.7;" ng-show="pastCheckIn">
+							Successfully checked in/out at ABC Daycare for {{pastCheckInDate | date:'MMM dd,yyyy'}} {{pastCheckInTime | date:'hh:mm a'}}
+						</div>
+						<div class="col col-100" style="text-align: center; padding-top: 25px; padding-bottom: 25px; color: #D3D3D3; font-size: 190%;line-height:1.7;" 
+							ng-show="!pastCheckIn">
+							Successfully checked in/out at ABC Daycare on {{currentDateTime | date:'medium'}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col col-10">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div> 
+	 </form>
+ </ion-content>
+ 
+ 
+</ion-view>

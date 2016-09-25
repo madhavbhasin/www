@@ -1,0 +1,319 @@
+<ion-view cache-view="false">
+
+ <!-- <ion-nav-title>VIRGINIA DEPARTMENT OF SOCIAL SERVICES</ion-nav-title> -->
+ <ion-header-bar class="va-header" >
+  	<img class="va-header-image" />
+</ion-header-bar>
+ <ion-content class="va-content">
+	<style>
+	 .btnProceed{
+		border-radius: 0px;
+		background: #3984AB !important;
+	 }
+ </style>
+    <form name="vaChildSelectionForm" ng-controller="vaChildSelectionCtrl" ng-submit="submitvaCheckInPin()">
+		<div class="row">
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row">
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row">
+			<div class="col col-35 col-offset-10" style="font-size: 150%; color: #ffffff; text-align:left;padding-top: 35px;">{{vendorName}}</div>
+			<div class="col col-10" style="text-align:center;">
+				<div id="cirContent" style="width: 70px; height: 70px; background: #ffffff; -moz-border-radius: 35px; -webkit-border-radius: 35px; border-radius: 35px;position: relative;top: 35px;z-index: 99;">
+				<br/><span style="font-size: 100%; color: rgb(55,86,108);">{{hhName}}</span><br/><span style="font-size: 50%; color: #A9A9A9;">FAMILY</span></div>
+			</div>
+			<div class="col col-35" style="font-size: 110%; color: #ffffff; text-align:right;padding-top: 35px;">{{currentDateTime | date:'medium'}} </div>
+			<div class="col col-10">&nbsp;</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-10">&nbsp;</div>
+			<div class="col col-80" style="text-align: center;    background-color: rgba(55,86,108,.8);height: 100%;  border-top: 5px solid #ffffff;">
+			<div class="row">
+				<div class="col">&nbsp;</div>
+			</div>
+			<div class="row" ng-show="pastCheckIn">
+					<div class="col col-47" style="font-size: 100%; color: #ffffff; text-align:left;">
+						Check in
+					</div>
+					<div class="col col-47" class="col col-20" style="font-size: 100%; color: #ffffff; text-align:left;">
+						Check out
+					</div>
+				</div>
+			<div class="row" ng-show="pastCheckIn">
+					<div class="col col-25">
+						<label >
+							 <input type="date" ng-model="checkInDate" placeholder="Date">
+						</label>
+					</div>
+					<div class="col col-22">
+						<label >
+							 <input type="time" ng-model="checkInTime">
+						</label>
+					</div>
+					<div class="col col-25">
+						<label >
+							 <input type="date" ng-model="checkOutDate" placeholder="Date">
+						</label>
+					</div>
+					<div class="col col-22">
+						<label >
+							 <input type="time" ng-model="checkOutTime">
+						</label>
+					</div>
+				</div>
+				<!-- <div class="row" ng-show="pastCheckIn">
+					<div class="col">
+						<label class="item item-input">
+						  <span class="input-label">Date</span>
+						  <input type="datetime">
+						</label>
+					</div>
+				</div> -->
+				<div class="row">
+					<div class="col">&nbsp;</div>
+				</div>
+				<div class="row responsive-md">
+						<div ng-repeat="child in listOfChildren1" class="col col-33" style="background-color: #0B77AF;height: 75px; border: solid 4px rgb(55,86,108);">
+							<div class="row">
+								<div class="col col-10">
+									<br/><input type="checkbox" ng-model="child.isChecked"/>
+								</div>
+								<div class="col col-25">
+									<span ng-show="(child.gender==='M')?true:false">
+										<img class="va-boys-image"/>
+									</span>
+									<span ng-show="(child.gender==='F')?true:false">
+										<img class="va-girls-image"/>
+									</span>
+								</div>
+								<div class="col col-65" style="text-align: left">
+									<span style="font-size: 75%;;color: #ffffff;">{{child.childname}}</span>&nbsp;
+									<span style="font-size: 50%;;color: #d3d3d3;">{{child.childAge}} yrs</span><br>
+									<span style="font-size: 50%;;color: #ffffff;"  ng-show="(!pastCheckIn && child.alreadyCheckIn==='Y')?true:false">
+										<span class="ion-ios-circle-filled" style="color:#00FF00;"></span> CHECKED IN</span>
+									<span style="font-size: 50%;;color: #ffffff;"  ng-show="(!pastCheckIn && child.alreadyCheckIn==='N')?true:false">
+										<span class="ion-ios-circle-filled" style="color:#FF0000;"></span> NOT CHECKED IN</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row responsive-md">
+						<div ng-repeat="child in listOfChildren2" class="col col-33" style="background-color: #0B77AF;height: 75px; border: solid 4px rgb(55,86,108);">
+							<div class="row">
+								<div class="col col-10">
+									<br/><input type="checkbox" ng-model="child.isChecked"/>
+								</div>
+								<div class="col col-25">
+									<span ng-show="(child.gender==='M')?true:false">
+										<img class="va-boys-image"/>
+									</span>
+									<span ng-show="(child.gender==='F')?true:false">
+										<img class="va-girls-image"/>
+									</span>
+								</div>
+								<div class="col col-65" style="text-align: left">
+									<span style="font-size: 75%;;color: #ffffff;">{{child.childname}}</span>&nbsp;
+									<span style="font-size: 50%;;color: #d3d3d3;">{{child.childAge}} yrs</span><br>
+									<span style="font-size: 50%;;color: #ffffff;"  ng-show="( !pastCheckIn && child.alreadyCheckIn==='Y')?true:false">
+										<span class="ion-ios-circle-filled" style="color:#00FF00;"></span> CHECKED IN</span>
+									<span style="font-size: 50%;;color: #ffffff;"  ng-show="(!pastCheckIn && child.alreadyCheckIn==='N')?true:false">
+										<span class="ion-ios-circle-filled" style="color:#FF0000;"></span> NOT CHECKED IN</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row responsive-md">
+						<div ng-repeat="child in listOfChildren3" class="col col-33" style="background-color: #0B77AF;height: 75px; border: solid 4px rgb(55,86,108);">
+							<div class="row">
+								<div class="col col-10">
+									<br/><input type="checkbox" ng-model="child.isChecked"/>
+								</div>
+								<div class="col col-25">
+									<span ng-show="(child.gender==='M')?true:false">
+										<img class="va-boys-image"/>
+									</span>
+									<span ng-show="(child.gender==='F')?true:false">
+										<img class="va-girls-image"/>
+									</span>
+								</div>
+								<div class="col col-65" style="text-align: left">
+									<span style="font-size: 75%;;color: #ffffff;">{{child.childname}}</span>&nbsp;
+									<span style="font-size: 50%;;color: #d3d3d3;">{{child.childAge}} yrs</span><br>
+									<span style="font-size: 50%;;color: #ffffff;"  ng-show="(!pastCheckIn && child.alreadyCheckIn==='Y')?true:false">
+										<span class="ion-ios-circle-filled" style="color:#00FF00;"></span> CHECKED IN</span>
+									<span style="font-size: 50%;;color: #ffffff;"  ng-show="(!pastCheckIn && child.alreadyCheckIn==='N')?true:false">
+										<span class="ion-ios-circle-filled" style="color:#FF0000;"></span> NOT CHECKED IN</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!--<div class="row">
+
+
+					<div class="col col-33" style="background-color: #0B77AF;height: 75px; border: solid 4px rgb(55,86,108);">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked1"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-boys-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">John Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">6 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span> NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col col-33" style="background-color: #0B77AF; height: 75px; border: solid 4px rgb(55,86,108)">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked2"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-girls-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">Jane Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">4 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span>NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col col-33" style="background-color: #0B77AF; height: 75px; border: solid 4px rgb(55,86,108);">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked3"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-boys-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">Joe Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">6 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span>NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-33" style="background-color: #0B77AF; height: 75px; border: solid 4px rgb(55,86,108);">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked4"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-boys-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">Mykur Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">6 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span>NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col col-33" style="background-color: #0B77AF; height: 75px; border: solid 4px rgb(55,86,108);">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked5"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-girls-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">Steve Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">6 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span>NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col col-33" style="background-color: #0B77AF; height: 75px; border: solid 4px rgb(55,86,108);">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked6"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-boys-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">Adam Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">5 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span>NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-33" style="background-color: #0B77AF; height: 75px; border: solid 4px rgb(55,86,108);">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked7"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-boys-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">Matt Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">4 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span>NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col col-33" style="background-color: #0B77AF; height: 75px; border: solid 4px rgb(55,86,108);">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked8"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-girls-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">Robert Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">6 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span>NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+					<div class="col col-33" style="background-color: #0B77AF; height: 75px; border: solid 4px rgb(55,86,108);">
+						<div class="row">
+							<div class="col col-10">
+								<br/><input type="checkbox" ng-model="isChecked9"/>
+							</div>
+							<div class="col col-25">
+								<img class="va-boys-image"/>
+							</div>
+							<div class="col col-65" style="text-align: left">
+								<span style="font-size: 75%;;color: #ffffff;">Jerry Smith</span>
+								<span style="font-size: 50%;;color: #d3d3d3;">6 yrs old</span><br>
+								<span style="font-size: 50%;;color: #ffffff;"><span class="ion-ios-circle-filled" style="color:red;"></span>NOT CHECKED IN</span>
+							</div>
+						</div>
+					</div>
+				</div> -->
+				<div class="row">
+					<div class="col">&nbsp;</div>
+				</div>
+			</div>
+			<div class="col col-10">&nbsp;</div>
+		</div>
+		<div class="row">
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row">
+			<div class="col col-50 col-offset-25">
+				<a href="#" ng-click="proceedCheckIn()" class="button button-block button-positive btnProceed" style="border-radius: 0px;background: #3984AB !important;">PROCEED TO CHECK IN/OUT<span class="ion-arrow-right-c"</span> </a>
+			</div>
+		</div
+		<div class="row">
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row">
+			<div class="col">&nbsp;</div>
+		</div>
+	 </form>
+ </ion-content>
+
+</ion-view>

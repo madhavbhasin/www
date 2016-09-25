@@ -1,0 +1,32 @@
+<ion-view style="" id="page5" title="Login" hide-nav-bar="true" hide-back-button="true">
+    <ion-content scroll="false" padding="true" style="background: url(img/Virginia_DSS-bg01.jpg) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding">
+        <form class="list " id="login-form7">
+            <div style="width: 748px; height: 8px;" class="spacer"></div>
+            <div>
+                <img style="display: block; margin-left: auto; margin-right: auto;" src="img/Virginia_DSS-header.png" height="auto" width="100%">
+            </div>
+            <div style="width: 731px; height: 170px;" class="spacer"></div>
+            <div id="login-card210" class="list card "></div>
+            <div id="login-card24" class="list card ">
+                <form class="list " id="login-form8">
+                    <div style="width: 748px; height: 13px;" class="spacer"></div>
+                    <label id="login-input8" class="item item-input item-stacked-label ">
+                        <span class="input-label">User Name: </span>
+                        <input placeholder="User Name" type="text" ng-model="data.userName">
+                    </label>
+                    <div style="width: 748px; height: 13px;" class="spacer"></div>
+                    <label id="login-input9" class="item item-input item-stacked-label ">
+                        <span class="input-label">Password:</span>
+                        <input placeholder="Password" type="password" ng-model="data.passwrd">
+                    </label>
+                    <div style="width: 748px; height: 46px;" class="spacer"></div>
+                </form>
+            </div>
+          <!--  <a class=" button button-positive  button-block icon-left ion-ios-unlocked " id="login-button2" ui-sref="tab.vaHome">Log in</a>-->
+          <button class="button button-positive  button-block icon-left ion-ios-unlocked" ng-click="login()">Log in</button>
+            <div id="login-card23" class="list card "></div>
+            <!-- <ion-item style="" ui-sref="menu.home" id="login-list-item4" class="item-icon-left dark  ">
+                <i class="icon ion-android-plane"></i>Work in Offline Mode</ion-item> -->
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+ 
+<ion-view ng-controller="WelfareCaseDetailsCtrl" cache-view="false">
+  <ion-nav-title>  {{welfarecase.Name}} Case  </ion-nav-title>
+ 
+  <ion-content>
+
+    <div class="item">
+	      <p>status </p> 
+		  <h2> {{welfarecase.Case_Status__c}}</h2>
+     </div>
+    <div class="item">
+		  <p>referral</p> 
+		  <h2>{{welfarecase.Referral_Method__c}}</h2>	      
+    </div>
+
+    <div class="item">
+      <p>contact<p>
+	  <h2>{{welfarecase.Primary_Contact__c}}</h2>
+	  <p>{{welfarecase.Primary_Contact_Phone__c}}</p>
+   </div>
+     
+    <div class="item">
+	<p>household members<p>
+	  <ion-list> 
+		  <ion-item class="item"  type="item-text-wrap" >   <h3> Dad LastName </h3>     </ion-item> 
+		  <ion-item class="item"  type="item-text-wrap" >   <h3> Mom LastName </h3>     </ion-item> 
+		  <ion-item class="item"  type="item-text-wrap" >   <h3> Child LastName </h3>  </ion-item> 
+	  </ion-list>
+    </div>
+
+	
+  </ion-content>
+</ion-view>

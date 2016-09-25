@@ -1,0 +1,108 @@
+<ion-view>
+ <ion-nav-title> New Welfare Case </ion-nav-title>
+
+ 
+ <ion-content >
+    <form name="welfarecaseForm" ng-controller="WelfareCaseNewCtrl" ng-submit="addWelfareCase()">
+
+      <div class="list">      
+		<label class="item item-input item-stacked-label">
+          <span class="input-label">Case Name</span>
+          <input type="text" placeholder="Applicant Name" />
+        </label> 
+
+	
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Primary Contact</span>
+          <input type="text" placeholder="First Name  Last Name" ng-model="c.Primary_Contact__c"  />
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Phone</span>
+          <input type="number" placeholder = "XXXXXXXXXX" ng-model="c.Primary_Contact_Phone__c"   />
+        </label>
+		<label class="item item-input item-select">			
+              <span class="input-label">Status</span>		       
+			<select  ng-model="c.Case_Status__c"  required >
+			  <option selected>Pending</option>
+			  <option>Open</option>
+			  <option>Closed</option>
+			</select>
+		 </label>
+
+         <label class="item item-input item-select">
+          <span class="input-label">Referral</span>
+		  <select ng-model="c.Referral_Method__c"  required >
+              <option selected>Phone</option>
+              <option>Mail-in</option>
+              <option>Walk-In</option>
+              <option>Home Visit</option>
+          </select>         
+        </label> 
+
+
+      </div>
+      <div class="row">
+        <div class="col">
+          <button class="button-full button icon-left ion-checkmark button-positive {{submitAllowedClass}}"  ng-disabled="welfarecaseForm.$invalid">Submit</button>
+        </div>
+        <div class="col">
+          <a class="button-full button icon-left ion-close button-assertive" href="#/tab/welfarecaseDetails/{{wfCase.Id}}">Cancel</a>
+        </div>
+      </div>
+    </form>
+
+
+  <div class="row" >   
+	<div class="col">
+	  <button class="button-full button button-positive" ng-click="showSignatureModal()">Capture Signature</button>
+	</div>
+  </div>
+  <div class="row" > 
+	<div class="col" ng-show="signature">
+	  <img ng-src="{{signature}}" style="width:100%;" />
+	</div>
+  </div>
+
+	<div class="row" >       
+       <div class="col">
+         <button class="button-full button button-positive" ng-click="capturePhoto()">Take Picture</button>
+       </div>
+    </div>
+    <div class="row" >
+	  <div class="col" ng-show="photoImageData">
+	  <img data-ng-src="data:image/jpg;base64,{{photoImageData}}" />
+	  </div>
+    </div>
+
+	<div class="row" >   
+       <div class="col">
+          <button class="button-full button button-positive" ng-click="scanBarcode()">Scan Barcode</button>
+        </div>
+    </div>
+   <div class="row" >
+		 <div class="col" ng-show="scanImageData">
+             <h4>{{scanImageData}}</h4>
+        </div>
+	</div>
+
+
+  </ion-content>
+</ion-view>
+
+<script id="signature.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Capture Signature</h1>
+    <button class="button button-icon icon ion-close-round" ng-click="closeSignatureModal()"></button>
+  </ion-header-bar>
+  <ion-content scroll="false" padding="true">
+    <div class="">
+      <canvas id='signatureCanvas' class="padding-horizontal" style="width: 100%;border: 1px solid black;"></canvas>
+      <div class='button-bar padding'>
+        <a class='button button' ng-click='clearCanvas()'>Clear</a>
+        <a class='button button-positive' ng-click='saveCanvas()'>Save</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+</script>

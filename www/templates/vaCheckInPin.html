@@ -1,0 +1,80 @@
+<ion-view cache-view="false">
+ 
+ <!-- <ion-nav-title>VIRGINIA DEPARTMENT OF SOCIAL SERVICES</ion-nav-title> -->
+ <ion-header-bar class="va-header" >
+  	<img class="va-header-image" />
+</ion-header-bar>
+ <ion-content class="va-content">
+
+    <form name="vaCheckInPinForm" ng-controller="vaCheckInPinCtrl" ng-init="initPin()" ng-submit="submitvaCheckInPin()">
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div> 
+		
+		<div class="row">
+			<div class="col col-10">&nbsp;</div>
+			<div class="col col-80" style="text-align: center;background-color: #2E4E65;height: 400px; opacity: 0.6; border-top: 5px solid #ffffff;">
+			<div class="row">
+				<div class="col col-60 col-offset-20">
+					<div class="list">
+						<label class="item item-input item-stacked-label" style="border:none;">
+							<span class="input-label"
+							style="text-align: center; height: 125px; padding-top: 50px; font-size: 200%; color: #f3f3f3;width:100%;max-width:300px;border-bottom: solid 1px;">
+							ENTER YOUR PIN</span>
+							<input type="password" placeholder="****" maxlength="4" ng-model="pin" ng-keyup="validatePin(pin)"
+							style="border-bottom: none; border-right: none; border-top: none; border-left: none; width: 100%; 
+							height: 200px; text-align: center;font-size: -webkit-xxx-large; background-color: #2E4E65; color: #f3f3f3; letter-spacing: 25px;">
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="col col-10">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div>
+		<div class="row"> 
+			<div class="col">&nbsp;</div>
+		</div> 
+	 </form>
+
+<!--
+	<div class="col">
+	  <button class="button-full button button-positive" ng-click="showSignatureModal()">Capture Signature</button>
+	</div>
+	<div class="col" ng-show="signature">
+	  <img ng-src="{{signature}}" style="width:100%;" />
+	</div>
+-->
+	  
+ </ion-content>
+</ion-view>
+
+<!--
+<script id="signature.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Capture Signature</h1>
+    <button class="button button-icon icon ion-close-round" ng-click="closeSignatureModal()"></button>
+  </ion-header-bar>
+  <ion-content scroll="false" padding="true">
+    <div class="">
+      <canvas id='signatureCanvas' class="padding-horizontal" style="width: 100%;border: 1px solid black;"></canvas>
+      <div class='button-bar padding'>
+        <a class='button button' ng-click='clearCanvas()'>Clear</a>
+        <a class='button button-positive' ng-click='saveCanvas()'>Save</a>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+</script>
+	-->

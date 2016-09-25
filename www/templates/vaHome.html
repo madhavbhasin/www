@@ -1,0 +1,106 @@
+<ion-view>
+ <ion-nav-title>VIRGINIA DEPARTMENT OF SOCIAL SERVICES</ion-nav-title>
+ <ion-header-bar class="va-header" >
+  	<img class="va-header-image" />
+</ion-header-bar>
+ <!--<div style="width: 100%; height: 100px;">
+   <img class="va-header-image"/>
+</div>-->
+ <ion-content class="va-content" ng-init="initHome()">
+	<div class="row">
+		<div class="col">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col col-10">&nbsp;</div>
+		<div class="col col-35" style="font-size: 200%; text-align: center; color:#F3F3F3;">
+			<i class="icon ion-key"></i>&nbsp;&nbsp;PIN
+		</div>
+		<div class="col col-10">&nbsp;</div>
+		<div class="col col-35" style="font-size: 200%; text-align: center; color:#F3F3F3;">
+			<i class="icon ion-qr-scanner"></i>&nbsp;&nbsp;QR CODE
+		</div>
+		<div class="col col-10">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col col-10">&nbsp;</div>
+		<div class="col col-35">
+			<button class="button-full button button-positive btnHomePage" ng-click="navigateToCheckInUsingPin()">CHECK IN/OUT</button>
+		</div>
+		<div class="col col-10">&nbsp;</div>
+		<div class="col col-35">
+			<!-- <a href="#/tab/vaCheckInQR" class="button button-block button-positive btnHomePage">CHECK IN/OUT</a> -->
+			<button class="button-full button button-positive btnHomePage" ng-click="scanBarcode()">CHECK IN/OUT</button>
+		</div>
+		<div class="col col-10">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col col-10">&nbsp;</div>
+		<div class="col col-35">
+				<button class="button-full button button-positive btnHomePage" ng-click="navigateToPastCheckInUsingPin()">ENTER A PAST VISIT</button>
+		</div>
+		<div class="col col-10">&nbsp;</div>
+		<div class="col col-35">
+			<button class="button-full button button-positive btnHomePage" ng-click="scanBarcodePastVisit()">ENTER A PAST VISIT</button>
+		</div>
+		<div class="col col-10">&nbsp;</div>
+	</div>
+  <div class="spacer" style="width: 300px; height: 240px;"></div>
+	<div class="row">
+		<div class="col col-90">&nbsp;</div>
+		<div class="col col-10" >
+		<!--	<a href="" class="button button-block button-positive btnHomePage">ENTER AN ABSENCE</a>-->
+
+  <!--  <ion-item ui-sref="login">-->
+
+<!-- <a href="login"></a> -->
+
+<!-- <ion-item ui-sref="login"> -->
+
+<a href="#/login"><img src="img/LOGOUT.png"></a>
+</img>
+
+
+
+
+  <!--  -->
+
+		</div>
+		<!--<div class="col col-10">&nbsp;</div>-->
+		<!-- <div class="col col-35">
+			<a href="" class="button button-block button-positive btnHomePage">ENTER AN ABSENCE</a>
+		</div>
+		<div class="col col-10">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col col-10">&nbsp;</div>
+		<div class="col col-35">
+			<a href="" class="button button-block button-positive btnHomePage">ENTER A HOLIDAY</a>
+		</div>
+		<div class="col col-10">&nbsp;</div>
+		<div class="col col-35">
+			<a href="" class="button button-block button-positive btnHomePage">ENTER A HOLIDAY</a>
+		</div>
+		<div class="col col-10">&nbsp;</div>
+	</div>
+
+	<div class="row">
+		<div class="col">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col">&nbsp;</div>
+	</div>
+	<div class="row">
+		<div class="col">&nbsp;</div>
+	</div>
+-->
+  </ion-content>
+</ion-view>
